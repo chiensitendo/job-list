@@ -118,6 +118,7 @@
   },
   "defaultProject": "challenge",
   "cli": {
+    "analytics": false,
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

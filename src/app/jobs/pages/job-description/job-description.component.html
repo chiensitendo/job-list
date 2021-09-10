@@ -1,1 +1,23 @@
-<p>Display the job details here</p>
+<form class ="d-flex flex-column align-items-center">
+    <button (click) = "returnJobs()" type="button" class="btn btn-warning mb-4"><fa-icon [icon]="left"></fa-icon> Return</button>
+    <div *ngIf="job$ | async as job" class="card" style="width: 50%">
+    <img class="card-img-top" src="{{job.logo}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{job.title}}</h5>
+        <p class="card-text" style = "white-space: pre;">{{job.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Company: </b>{{job.company}}</li>
+
+        <li class="list-group-item"><b>JobType: </b>
+            <span *ngIf = "job.type === 0">Part Time</span>
+            <span *ngIf = "job.type === 1">Full Time</span>
+            <span *ngIf = "job.type === 2">Remote</span>
+        </li>
+        <li class="list-group-item"><b>Start Date: </b>{{job.date}}</li>
+    </ul>
+    <div class="card-body text- center">
+        <a href="{{job.link}}" class="card-link">Job Link</a>
+    </div>
+    </div>
+</form>

@@ -1,0 +1,70 @@
+<button #btn hidden type="button" (click)="openModal(template)"></button>
+
+<ng-template #template>
+   <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal($event)">
+         <span aria-hidden="true">×</span>
+      </button>
+   </div>
+   <div class="modal-body">
+      <div class="row" [formGroup] = "jobForm">
+         <div class="col-xs-12 col-12 form-group mb-3">
+            <label for="name">Job Name</label>
+            <input type="text" id = "name" formControlName = "name" class="form-control" [ngClass] = "{'is-invalid': jobForm.controls.name.touched && jobForm.controls.name.errors}" placeholder="Job Name"  />
+            <div *ngIf = "jobForm.controls.name.touched && jobForm.controls.name.errors" class="invalid-feedback">Job Name is required.</div>
+         </div>
+         <div class="col-xs-12 col-12 form-group mb-3">
+            <label for="companyName">Company Name</label>
+            <input type="text" id = "companyName" formControlName = "companyName" class="form-control"  [ngClass] = "{'is-invalid': jobForm.controls.companyName.touched && jobForm.controls.companyName.errors}" placeholder="Company Name" />
+            <div *ngIf = "jobForm.controls.companyName.touched && jobForm.controls.companyName.errors" class="invalid-feedback">Company Name is required.</div>
+         </div>
+         <div class="form-group">
+            <label for="jobType">Job Type</label>
+            <select class=" col-xs-12 col-12 form-control mb-3" formControlName = "jobType" [ngClass] = "{'is-invalid': jobForm.controls.jobType.touched && jobForm.controls.jobType.errors}" id="jobType">
+               <option value = "0">Part Time</option>
+               <option value = "1">Full Time</option>
+               <option value = "2">Remote</option>
+            </select>
+            <div *ngIf = "jobForm.controls.jobType.touched && jobForm.controls.jobType.errors" class="invalid-feedback">Job Type is required.</div>
+         </div>
+         <div class="col-xs-12 col-12 form-group mb-3">
+            <label for="startDate">Start Date</label>
+            <input type="text"
+                  id = "startDate"
+                  placeholder="Start Date"
+                  class="form-control"
+                  [ngClass] = "{'is-invalid': jobForm.controls.startDate.touched && jobForm.controls.startDate.errors}"
+                  [minDate]="minDate"
+                  formControlName = "startDate"
+                  bsDatepicker [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }">
+            <div *ngIf = "jobForm.controls.startDate.touched && jobForm.controls.startDate.errors" class="invalid-feedback">Start Date is required.</div>
+         </div>
+         <div class="col-xs-12 col-12 form-group mb-3">
+            <label for="url">URL</label>
+            <input type="text" id = "url" formControlName = "url" class="form-control" [ngClass] = "{'is-invalid': jobForm.controls.url.touched && jobForm.controls.url.errors}" placeholder="URL" />
+            <div *ngIf = "jobForm.controls.url.touched && jobForm.controls.url.errors" class="invalid-feedback">URL is required or invalid URL.</div>
+         </div>
+         <div class="col-xs-12 col-12 form-group mb-3">
+            <label for="logo">Logo url</label>
+            <input type="text" id = "logo" formControlName = "logo" class="form-control" placeholder="Logo url" />
+         </div>
+         <div class="col-xs-12 col-12 form-group mb-3">
+            <label for="description">Description</label>
+            <textarea type="text"
+                  id = "description"
+                  placseholder="Description"
+                  rows = "5"
+                  formControlName = "description"
+                  class="form-control"></textarea>
+         </div>
+         <div class="col-xs-12 col-12 form-group text-center mb-3">
+            <button type="submit" class="btn btn-primary" (click) = "onSubmit()">Submit</button>
+         </div>
+         
+      </div>
+   </div>
+   <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="hideModal($event)">Close</button>
+   </div>
+</ng-template>

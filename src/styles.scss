@@ -30,3 +30,9 @@ a.brand {
   font-weight: 500;
   letter-spacing: 0.8px;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "~ngx-bootstrap/datepicker/bs-datepicker";

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Job, JobType } from "../../../../shared/models/jobs";
 
 @Component({
@@ -11,7 +11,13 @@ export class JobComponent implements OnInit {
 
   JobType = JobType;
 
+  @Output() delete: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  handleDetete(id: string) {
+    this.delete.emit(id);
+  }
 }

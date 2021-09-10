@@ -3,10 +3,13 @@
   <div class="job-meta">
     <!-- TODO: create a pipe for date -->
     <span class="job-posted">{{ job.date }}</span>
-    <span>{{ job.type === JobType.FullTime ? "Full Time" : "Part Time" }}</span>
+    <span *ngIf = "job.type === 0">Part Time</span>
+    <span *ngIf = "job.type === 1">Full Time</span>
+    <span *ngIf = "job.type === 2">Remote</span>
   </div>
   <div class="job-title">
     <a [routerLink]="['/jobs', job.id]">{{ job.title }}</a>
   </div>
   <a href="#">{{ job.company }}</a>
+  <button type="button" class="btn btn-danger" (click) ="handleDetete(job.id)">Delete</button>
 </div>

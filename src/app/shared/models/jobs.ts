@@ -1,6 +1,7 @@
 export enum JobType {
   PartTime,
   FullTime,
+  Remote,
 }
 
 export interface Job {
@@ -11,4 +12,5 @@ export interface Job {
   link: string;
   date: string;
   type: JobType;
+  description?: string;
 }
